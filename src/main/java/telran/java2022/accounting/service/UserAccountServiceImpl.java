@@ -52,9 +52,6 @@ public class UserAccountServiceImpl implements UserAccountService, CommandLineRu
 	@Override
 	public UserAccountResponseDto getUser(String login) {
 		UserAccount userAccount = repository.findById(login).orElseThrow(() -> new UserNotFoundException());
-//		if (userAccount.getLocalDatePassword().plusMonths(6).isBefore(LocalDate.now())) {
-//			throw new PasswordUpdateException(userAccount.getLocalDatePassword());
-//		}
 		return modelMapper.map(userAccount, UserAccountResponseDto.class);
 	}
 
