@@ -17,13 +17,9 @@ public class CustomWebSecurity {
 	private final PostRepository postRepository;
 	private final UserAccountRepository userAccountRepository;
 
-	public boolean checkPassword(String userName) throws Exception {
+	public boolean checkPassword(String userName) {
 		UserAccount userAccount = userAccountRepository.findById(userName).orElse(null);
-		if(userAccount.getLocalDatePassword().plusDays(60).isAfter(LocalDate.now())) {
-			throw new Exception("Update your password.");
-		}
-		return true;
-//		return userAccount.getLocalDatePassword().isAfter(LocalDate.now().plusDays(60));
+		return userAccount.getLocalDatePassword().plusDays(60).isAfter(LocalDate.now());
 	}
 
 	public boolean checkPostAuthor(String postId, String userName) {
