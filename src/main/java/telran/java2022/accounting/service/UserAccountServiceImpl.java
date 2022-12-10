@@ -24,6 +24,8 @@ public class UserAccountServiceImpl implements UserAccountService, CommandLineRu
 	final ModelMapper modelMapper;
 	final PasswordEncoder passwordEncoder;
 
+	
+	
 	@Override
 	public void run(String... args) throws Exception {
 		if (!repository.existsById("admin")) {
